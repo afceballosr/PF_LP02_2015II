@@ -9,9 +9,9 @@ public class Main {
 	public static void main(String[] args) {
 		
 		archivo a = new archivo();
-		String t = a.leertxt("C:\\Users\\jhonattan\\workspace\\AnalizadorLexico\\texto\\HOLA.txt");
+		String t = a.leertxt("C:\\Users\\Andrew\\git\\PF_LP02_2015II\\text\\Lenguaje.txt");
 		
-		String patron = ("(while)|(else)|(if)|(class)|(return)|(for)|([0-9]+)|([<|>|=]+)|(;)|([+|*|-|/]+)|([(|)|{|}]+)|([a-zA-Z]+)"); //patron (expresion regular) 
+		String patron = ("(while)|(else)|(if)|(class)|(return)|(for)|([0-9]+)|([<|>|=]+)|(;)|([+|*|-|/]+)|([(|)|{|}]+)|([a-zA-Z·ÈÌÛu¡…Õ”⁄]+)"); //patron (expresion regular) 
 		
 		String texto =  t.toLowerCase();
 		
