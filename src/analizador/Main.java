@@ -9,9 +9,10 @@ public class Main {
 	public static void main(String[] args) {
 		
 		archivo a = new archivo();
-		String t = a.leertxt("C:\\Users\\Andrew\\git\\PF_LP02_2015II\\text\\Lenguaje.txt");
+		//String t =  a.leertxt("C:\\texto\\HOLA.txt");
+		String t = a.leertxt("C:\\Users\\jhonattan\\workspace\\AnalizadorLexico\\texto\\HOLA.txt");
 		
-		String patron = ("(while)|(else)|(if)|(class)|(return)|(for)|([0-9]+)|([<|>|=]+)|(;)|([+|*|-|/]+)|([(|)|{|}]+)|([a-zA-Z·ÈÌÛu¡…Õ”⁄]+)"); //patron (expresion regular) 
+		String patron = ("(while)|(else)|(if)|(class)|(return)|(for)|([0-9]+)|([<|>|!|<=|>=|==]+)|(;)|([+|*|-|/|=]+)|([(|)|{|}]+)|(import)|(package)|([a-zA-Z]+)"); //patron (expresion regular) 
 		
 		String texto =  t.toLowerCase();
 		
@@ -22,7 +23,7 @@ public class Main {
 		
 		//matcher hara el analisis compilando el patron y capturando el texto 
 		Matcher matc = p.matcher(texto);
-
+		
 		//hash table para almacenar variables con un id para su futura comparaci√≥n
 		Hashtable<String , Integer> palabra = new Hashtable<String, Integer>();
 		
@@ -41,6 +42,8 @@ public class Main {
 			String tokenTipo10 = matc.group(10);
 			String tokenTipo11 = matc.group(11);
 			String tokenTipo12 = matc.group(12);
+			String tokenTipo13 = matc.group(13);
+			String tokenTipo14 = matc.group(14);
 			
 			
 			if(tokenTipo1 != null){
@@ -78,8 +81,14 @@ public class Main {
 				System.out.println("<final_sentencia, "+ tokenTipo11 + " >");
 				}
 			if(tokenTipo12 != null){
-				System.out.println("<variable, "+ tokenTipo12 + " >");
-				palabra.put(tokenTipo12, id++);
+				System.out.println("<pal_reserv_import, "+ tokenTipo12 + " >");
+				}
+			if(tokenTipo13 != null){
+				System.out.println("<pal_reserv_package, "+ tokenTipo13 + " >");
+				}
+			if(tokenTipo14 != null){
+				System.out.println("<variable, "+ tokenTipo14 + " >");
+				palabra.put(tokenTipo14, id++);
 				//guarda variable en hash table
 				}
 		}
@@ -92,4 +101,5 @@ public class Main {
 	static int Panterior=-1,Pactual=-1,linea=0;
 	static Integer id =0;
 	}
+
 
